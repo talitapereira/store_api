@@ -27,6 +27,12 @@ def convert_decimal_128(v):
 Decimal_ = Annotated[Decimal, AfterValidator(convert_decimal_128)]
 
 
+def filter_products_by_price(min_price, max_price):
+    
+    filtered_products = query_products_from_database(min_price, max_price)
+    return filtered_products
+
+
 class ProductUpdate(BaseSchemaMixin):
     quantity: Optional[int] = Field(None, description="Product quantity")
     price: Optional[Decimal_] = Field(None, description="Product price")

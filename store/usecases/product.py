@@ -50,4 +50,10 @@ class ProductUsecase:
         return True if result.deleted_count > 0 else False
 
 
+
+class InsertionError(Exception):
+    def __init__(self, message="Erro ao inserir o item"):
+        self.message = message
+        super().__init__(self.message)
+        
 product_usecase = ProductUsecase()
